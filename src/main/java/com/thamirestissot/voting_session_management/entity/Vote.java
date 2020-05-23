@@ -15,5 +15,19 @@ public class Vote {
     @JoinColumn(name = "associate_id")
     private Associate associate;
 
+    public Boolean getChoice() {
+        return choice;
+    }
 
+    public void setChoice(Boolean choice) {
+        this.choice = choice;
+    }
+
+    public Associate getAssociate() {
+        return associate;
+    }
+
+    public void setAssociate(Associate associate) {
+        this.associate = associate;
+    }
 }

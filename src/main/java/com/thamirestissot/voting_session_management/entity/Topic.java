@@ -31,6 +31,10 @@ public class Topic {
         this.votingSessions = votingSessions;
     }
 
+    public void addVotingSessions(VotingSession votingSessions) {
+        this.votingSessions.add(votingSessions);
+    }
+
     public String getTitle() {
         return title;
     }

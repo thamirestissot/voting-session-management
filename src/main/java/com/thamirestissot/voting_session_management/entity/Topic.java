@@ -1,6 +1,7 @@
 package com.thamirestissot.voting_session_management.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,12 @@ public class Topic {
 
     private String title;
     private String description;
+
+    public Topic(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.votingSessions = new ArrayList<VotingSession>();
+    }
 
     public List<VotingSession> getVotingSessions() {
         return votingSessions;

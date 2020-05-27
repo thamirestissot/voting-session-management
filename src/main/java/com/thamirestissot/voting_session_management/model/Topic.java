@@ -1,26 +1,35 @@
-package com.thamirestissot.voting_session_management.entity;
+package com.thamirestissot.voting_session_management.model;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 public class Topic {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToMany(targetEntity = VotingSession.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "votingSession_id")
     private List<VotingSession> votingSessions;
 
     private String title;
+
     private String description;
 
-    public Topic(String title, String description) {
+    public Topic(long id, String title, String description) {
+        this.id = id;
         this.title = title;
         this.description = description;
-        this.votingSessions = new ArrayList<VotingSession>();
+    }
+
+    public Topic(long id, List<VotingSession> votingSessions, String title, String description) {
+        this.id = id;
+        this.votingSessions = votingSessions;
+        this.title = title;
+        this.description = description;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public List<VotingSession> getVotingSessions() {
@@ -29,10 +38,6 @@ public class Topic {
 
     public void setVotingSessions(List<VotingSession> votingSessions) {
         this.votingSessions = votingSessions;
-    }
-
-    public void addVotingSessions(VotingSession votingSessions) {
-        this.votingSessions.add(votingSessions);
     }
 
     public String getTitle() {
